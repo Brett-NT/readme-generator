@@ -60,7 +60,7 @@ function writeToFile(fileName, data) {
     const answers = questions(data);
     const createMarkdown = generateMarkdown(answers);
 
-    fs.writeFile('NewREADME.md', JSON.stringify(createMarkdown), function(err) {
+    fs.writeFile('NewREADME.md', createMarkdown, function(err) {
         if(err) {
             return console.log(err);
         }
