@@ -32,7 +32,7 @@ const questions = () => {
         },
         {
             type: 'input',
-            name: 'contribution',
+            name: 'contributors',
             message: 'List any additional contributors here if applicable.'
         },
         {
@@ -56,14 +56,14 @@ const questions = () => {
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    // const fileName = 'NewREADME.md';
-    
-    fs.writeFile(fileName, JSON.stringify(data), function(err) {
+
+    const answers = questions(data);
+    const createMarkdown = generateMarkdown(answers);
+
+    fs.writeFile('NewREADME.md', JSON.stringify(createMarkdown), function(err) {
         if(err) {
             return console.log(err);
         }
-
-
 
         console.log('README created Successfully.')
     })
@@ -72,6 +72,7 @@ function writeToFile(fileName, data) {
 
 // TODO: Create a function to initialize app
 function init() {
+
     questions()
     .then(writeToFile)
 }
