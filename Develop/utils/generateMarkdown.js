@@ -1,23 +1,23 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  if(data.license == 'Unlicensed') {
+  if(license == 'Unlicensed') {
     return '';
   }
   return `
 
-  ![badge] (https://img.shields.io/badge/license-${data.license}-brightgreen)<br />`
+  ![badge] (https://img.shields.io/badge/license-${license}-brightgreen)<br />`
   
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  const badge = `![badge] (https://img.shields.io/badge/license-${data.license}-brightgreen)`
+  if(license == 'Unlicensed') {
+    return '';
+  }
 
-  return badge
-  `<br />
-  This app is using the ${data.license} license.`
+  return `This app is using the ${license} license.`
 }
 
 // TODO: Create a function that returns the license section of README
@@ -33,17 +33,16 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}  
+  return `
+  # ${data.title}  
 
 
-  ![badge] (https://img.shields.io/badge/license-${data.license}-brightgreen)<br />  
+  ${renderLicenseBadge(license)}  
 
   
   ## Description  
 
-  ${data.description}  
-
-  <br />  
+  ${data.description}   
 
   ## Table of contents  
 
@@ -59,53 +58,33 @@ function generateMarkdown(data) {
 
   - [Test](#Test)  
 
-  - [data](#data)  
-
-<br />  
+  - [dat](#data)  
 
   ## Installation  
 
-  ${data.installation}  
-
-<br />  
+  ${data.installation}   
 
   ## Usage  
 
-  ${data.usage}  
+  ${data.usage}   
 
-<br />  
+  ## License   
 
-  ## License  
-
-  ![badge] (https://img.shields.io/badge/license-${data.license}-brightgreen)  
-
-  <br />  
-
-  Licensed using ${data.license}.  
-
-<br />  
+  ${renderLicenseLink(license)}  
 
   ## Contributors  
 
   ${data.contributors}  
 
-,br />  
-
   ## Tests  
 
-  ${data.tests}  
+  ${data.tests}   
 
-<br />  
-
-  ## data  
+  ## questions  
 
   My Github Username: ${data.githubUsername}  
 
-  <br />  
-
-  My Email address: ${data.email}  
-
-<br />  
+  My Email address: ${data.email}   
 
   README created using [README-generator](https://https://github.com/Brett-NT/readme-generator)  
 
