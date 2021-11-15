@@ -23,7 +23,7 @@ function renderLicenseLink(license) {
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  if(data.license == 'Unlicensed') {
+  if(license == 'Unlicensed') {
     return ''
   }
   
@@ -32,17 +32,17 @@ function renderLicenseSection(license) {
 }
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
+function generateMarkdown(questions) {
   return `
-  # ${data.title}  
+  # ${questions.projectName}  
 
 
-  ${renderLicenseBadge(license)}  
+  ${renderLicenseBadge(questions.license)}  
 
   
   ## Description  
 
-  ${data.description}   
+  ${questions.description}   
 
   ## Table of contents  
 
@@ -58,33 +58,33 @@ function generateMarkdown(data) {
 
   - [Test](#Test)  
 
-  - [dat](#data)  
+  - [dat](#questions)  
 
   ## Installation  
 
-  ${data.installation}   
+  ${questions.installation}   
 
   ## Usage  
 
-  ${data.usage}   
+  ${questions.usage}   
 
   ## License   
 
-  ${renderLicenseLink(license)}  
+  ${renderLicenseLink(questions.license)}  
 
   ## Contributors  
 
-  ${data.contributors}  
+  ${questions.contributors}  
 
   ## Tests  
 
-  ${data.tests}   
+  ${questions.tests}   
 
-  ## questions  
+  ## Questions  
 
-  My Github Username: ${data.githubUsername}  
+  My Github Username: ${questions.githubUsername}  
 
-  My Email address: ${data.email}   
+  My Email address: ${questions.email}   
 
   README created using [README-generator](https://https://github.com/Brett-NT/readme-generator)  
 
